@@ -5,25 +5,30 @@
     <link href="styles/style.css" rel="stylesheet" type="text/css">
     <title>My test page</title>
   </head>
-  <body>
-    <a href="https://www.mozilla.org/zh-TW/about/manifesto/">Mozilla Manifesto</a>
-    <p>At Mozilla, we’re a global community of</p>
-    <ol>
-     <li>technologists</li>
-     <li>thinkers</li>
-     <li>builders</li>
-    </ol>
-    <ul>
-      <li>technologists</li>
-      <li>thinkers</li>
-      <li>builders</li>
-     </ul>
-    <p>working together ... </p>
-    <h1>My main title</h1>
-    <p>My cat is <strong>very</strong> grumpy.</p>
-    <h2>My top level heading</h2>
-    <img src="images/control.png" alt="My test image"></img>
-    <button>Change user</button>
-    <script src="scripts/main.js"></script>
-  </body>
+    <h1>物品查询</h1>
+    <form id="queryForm">
+        <label for="item_names">请输入物品名称（以逗号分隔）：</label>
+        <input type="text" id="item_names" name="item_names">
+        <input type="button" value="查询" onclick="queryLocations()">
+    </form>
+    <p id="result"></p>
+    
+    <a href="modify_location.html">手动修改物品位置</a>
+
+    <script>
+        function queryLocations() {
+            var item_names = document.getElementById("item_names").value;
+            var resultDiv = document.getElementById("result");
+
+            // 使用AJAX请求向服务器发送查询
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    resultDiv.textContent = xhr.responseText;
+                }
+            };
+            xhr.open("GET", "query.php?item_names=" + item_names, true);
+            xhr.send();
+        }
+    </script>
 </html> 
