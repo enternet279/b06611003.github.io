@@ -5,19 +5,21 @@
     <link href="styles/style.css" rel="stylesheet" type="text/css">
     <title>道具位置查询</title>
   </head>
-    <h1>物品查询</h1>
-    <ul id="itemList">
-        <li>物品1: <span id="item1Location">位置1</span></li>
-        <li>物品2: <span id="item2Location">位置2</span></li>
-        <!-- 在这里列出所有物品 -->
-    </ul>
-
+    <h1>物品查询和位置修改</h1>
+    
     <h2>查询物品位置</h2>
     <label for="queryItem">输入要查询的物品：</label>
     <input type="text" id="queryItem">
     <button onclick="queryLocation()">查询位置</button>
 
-    <h3>手动修改物品位置</h3>
+    <h3>物品位置：</h3>
+    <ul>
+        <li>物品1: <span id="item1Location">位置1</span></li>
+        <li>物品2: <span id="item2Location">位置2</span></li>
+        <!-- 在这里列出所有物品 -->
+    </ul>
+
+    <h2>手动修改物品位置</h2>
     <label for="itemSelect">选择要修改的物品：</label>
     <select id="itemSelect">
         <option value="item1">物品1</option>
@@ -27,7 +29,6 @@
     <label for="newLocation">输入新的位置：</label>
     <input type="text" id="newLocation">
     <button onclick="updateLocation()">修改位置</button>
-
     <script>
       // 获取查询输入框
       const queryItem = document.getElementById("queryItem");
