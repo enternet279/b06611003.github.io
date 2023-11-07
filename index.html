@@ -6,29 +6,41 @@
     <title>道具位置查询</title>
   </head>
     <h1>物品查询</h1>
-    <form id="queryForm">
-        <label for="item_names">请输入物品名称（以逗号分隔）：</label>
-        <input type="text" id="item_names" name="item_names">
-        <input type="button" value="查询" onclick="queryLocations()">
-    </form>
-    <p id="result"></p>
-    
-    <a href="modify_location.html">手动修改物品位置</a>
+    <ul id="itemList">
+        <li>物品1: <span id="item1Location">位置1</span></li>
+        <li>物品2: <span id="item2Location">位置2</span></li>
+        <!-- 在这里列出所有物品 -->
+    </ul>
+
+    <h2>查询物品位置</h2>
+    <label for="queryItem">输入要查询的物品：</label>
+    <input type="text" id="queryItem">
+    <button onclick="queryLocation()">查询位置</button>
+
+    <h3>手动修改物品位置</h3>
+    <label for="itemSelect">选择要修改的物品：</label>
+    <select id="itemSelect">
+        <option value="item1">物品1</option>
+        <option value="item2">物品2</option>
+        <!-- 在这里列出所有物品 -->
+    </select>
+    <label for="newLocation">输入新的位置：</label>
+    <input type="text" id="newLocation">
+    <button onclick="updateLocation()">修改位置</button>
 
     <script>
-        function queryLocations() {
-            var item_names = document.getElementById("item_names").value;
-            var resultDiv = document.getElementById("result");
-
-            // 使用AJAX请求向服务器发送查询
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    resultDiv.textContent = xhr.responseText;
-                }
-            };
-            xhr.open("GET", "query.php?item_names=" + item_names, true);
-            xhr.send();
-        }
+      // 获取查询输入框
+      const queryItem = document.getElementById("queryItem");
+      
+      // 处理查询操作
+      function queryLocation() {
+          const itemToQuery = queryItem.value;
+      
+          if (itemLocations[itemToQuery] !== undefined) {
+              alert(`${itemToQuery} 的位置是：${itemLocations[itemToQuery]}`);
+          } else {
+              alert(`${itemToQuery} 未找到`);
+          }
+      }
     </script>
 </html> 
