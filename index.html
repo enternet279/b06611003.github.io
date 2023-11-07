@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <link href="styles/style.css" rel="stylesheet" type="text/css">
-    <title>道具位置查询</title>
+    <title>道具在哪兒？</title>
   </head>
-    <h1>物品查询和位置修改</h1>
+    <h1>位置查詢和修改</h1>
     
-    <h2>查询物品位置</h2>
-    <label for="queryItem">输入要查询的物品：</label>
+    <h2>查詢物品位置</h2>
+    <label for="queryItem">輸入要查詢的物品：</label>
     <input type="text" id="queryItem">
-    <button onclick="queryLocation()">查询位置</button>
+    <button onclick="queryLocation()">查詢位置</button>
 
     <h3>物品位置：</h3>
     <ul>
@@ -19,14 +19,14 @@
         <!-- 在这里列出所有物品 -->
     </ul>
 
-    <h2>手动修改物品位置</h2>
-    <label for="itemSelect">选择要修改的物品：</label>
+    <h2>手動修改物品位置</h2>
+    <label for="itemSelect">選擇要修改的物品：</label>
     <select id="itemSelect">
         <option value="item1">item1</option>
         <option value="item2">item2</option>
-        <!-- 在这里列出所有物品 -->
+        <!-- 在這裡列出所有物品 -->
     </select>
-    <label for="newLocation">输入新的位置：</label>
+    <label for="newLocation">輸入新的位置：</label>
     <input type="text" id="newLocation">
     <button onclick="updateLocation()">修改位置</button>
     <script>
