@@ -32,6 +32,21 @@
       // 获取查询输入框
       const queryItem = document.getElementById("queryItem");
       
+      // 模拟物品位置数据（替代SQLite数据库）
+      let itemLocations = {
+          item1: "位置1",
+          item2: "位置2",
+          // 在这里添加所有物品和它们的位置
+      };
+      
+      // 初始化显示物品位置
+      for (const item in itemLocations) {
+          const locationElement = document.getElementById(item + "Location");
+          if (locationElement) {
+              locationElement.textContent = itemLocations[item];
+          }
+      }
+      
       // 处理查询操作
       function queryLocation() {
           const itemToQuery = queryItem.value;
@@ -42,5 +57,36 @@
               alert(`${itemToQuery} 未找到`);
           }
       }
+      
+      // 获取选择物品和新位置输入框
+      const itemSelect = document.getElementById("itemSelect");
+      const newLocation = document.getElementById("newLocation");
+      
+      // 处理修改位置操作
+      function updateLocation() {
+          const selectedItem = itemSelect.value;
+          const newLocationValue = newLocation.value;
+      
+          if (itemLocations[selectedItem] !== undefined) {
+              itemLocations[selectedItem] = newLocationValue;
+      
+              // 更新显示的位置
+              const locationElement = document.getElementById(selectedItem + "Location");
+              if (locationElement) {
+                  locationElement.textContent = newLocationValue;
+              }
+          } else {
+              alert("物品不存在");
+          }
+      
+          // 可以将更新后的数据保存在本地存储中
+          // localStorage.setItem("itemLocations", JSON.stringify(itemLocations));
+      }
+      
+      // 从本地存储中恢复数据
+      // const savedItemLocations = localStorage.getItem("itemLocations");
+      // if (savedItemLocations) {
+      //     itemLocations = JSON.parse(savedItemLocations);
+      // }
     </script>
 </html> 
